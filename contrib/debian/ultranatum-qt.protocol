@@ -1,0 +1,11 @@
+[Protocol]
+exec=ultranatum-qt '%u'
+protocol=ultranatum
+input=none
+output=none
+helper=true
+listing=
+reading=false
+writing=false
+makedir=false
+deleting=false

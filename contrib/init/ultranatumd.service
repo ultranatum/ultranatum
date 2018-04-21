@@ -1,0 +1,22 @@
+[Unit]
+Description=Ultranatum's distributed currency daemon
+After=network.target
+
+[Service]
+User=ultranatumcore
+Group=ultranatumcore
+
+Type=forking
+PIDFile=/var/lib/ultranatumd/ultranatumd.pid
+ExecStart=/usr/bin/ultranatumd -daemon -pid=/var/lib/ultranatumd/ultranatumd.pid \
+-conf=/etc/ultranatumcore/ultranatum.conf -datadir=/var/lib/ultranatumd -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

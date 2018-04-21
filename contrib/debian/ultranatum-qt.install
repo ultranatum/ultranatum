@@ -1,0 +1,6 @@
+usr/local/bin/ultranatum-qt usr/bin
+share/pixmaps/ultranatum32.xpm usr/share/pixmaps
+share/pixmaps/ultranatum16.xpm usr/share/pixmaps
+share/pixmaps/ultranatum128.png usr/share/pixmaps
+debian/ultranatum-qt.desktop usr/share/applications
+debian/ultranatum-qt.protocol usr/share/kde4/services/
