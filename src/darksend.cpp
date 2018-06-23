@@ -2261,6 +2261,9 @@ std::string CDarksendPool::GetMessageByID(PoolMessage nMessageID)
 
 bool CDarkSendSigner::IsVinAssociatedWithPubkey(const CTxIn& txin, const CPubKey& pubkey)
 {
+        int MASTERNODE_PRICE = 1000;
+        if (chainActive.Height() > 105000) MASTERNODE_PRICE = 3000;
+        
     CScript payee;
     payee = GetScriptForDestination(pubkey.GetID());
 
@@ -2268,7 +2271,7 @@ bool CDarkSendSigner::IsVinAssociatedWithPubkey(const CTxIn& txin, const CPubKey
     uint256 hash;
     if(GetTransaction(txin.prevout.hash, tx, Params().GetConsensus(), hash, true)) {
         BOOST_FOREACH(CTxOut out, tx.vout)
-            if(out.nValue == 1000*COIN && out.scriptPubKey == payee) return true;
+            if((out.nValue == MASTERNODE_PRICE * COIN || out.nValue == 3000 * COIN) && out.scriptPubKey == payee) return true;
     }
 
     return false;

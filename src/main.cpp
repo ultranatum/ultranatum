@@ -1753,11 +1753,29 @@ CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params&
         return 15 * COIN;
 	} else if (nPrevHeight <= 43000) {
         return 30 * COIN;
-	} else if (nPrevHeight <= 100000) {
+	} else if (nPrevHeight <= 95000) {
         return 40 * COIN;
+	} else if (nPrevHeight <= 105000) {
+        return 1 * COIN;
+	} else if (nPrevHeight <= 110000) {
+        return 40 * COIN;
+	} else if (nPrevHeight <= 115000) {
+        return 45 * COIN;
+	} else if (nPrevHeight <= 120000) {
+        return 50 * COIN;
+	} else if (nPrevHeight <= 125000) {
+        return 60 * COIN;
+	} else if (nPrevHeight <= 130000) {
+        return 70 * COIN;
+	} else if (nPrevHeight <= 135000) {
+        return 80 * COIN;
+	} else if (nPrevHeight <= 140000) {
+        return 90 * COIN;
+	} else if (nPrevHeight <= 145000) {
+        return 100 * COIN;
 	}
 
-    CAmount nSubsidy = 250 * COIN;
+    CAmount nSubsidy = 110 * COIN;
 
     // yearly decline of production by ~50% per year until reached max coin ~32M.
     for (int i = consensusParams.nSubsidyHalvingInterval; i <= nPrevHeight; i += consensusParams.nSubsidyHalvingInterval) {
