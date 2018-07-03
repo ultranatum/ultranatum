@@ -625,10 +625,7 @@ bool CMasternodeBroadcast::CheckOutpoint(int& nDos)
             LogPrint("masternode", "CMasternodeBroadcast::CheckOutpoint -- Failed to find Masternode UTXO, masternode=%s\n", vin.prevout.ToStringShort());
             return false;
         }
-		int MASTERNODE_PRICE = 1000;
-        if (chainActive.Height() > 105000) MASTERNODE_PRICE = 3000;
-
-       if((coins.vout[vin.prevout.n].nValue != MASTERNODE_PRICE * COIN) && (coins.vout[vin.prevout.n].nValue != 3000 * COIN)) {
+        if(coins.vout[vin.prevout.n].nValue != 3000 * COIN) {
             LogPrint("masternode", "CMasternodeBroadcast::CheckOutpoint -- Masternode UTXO should have 3000 ULTRA, masternode=%s\n", vin.prevout.ToStringShort());
             return false;
         }
