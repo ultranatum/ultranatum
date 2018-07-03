@@ -1773,9 +1773,21 @@ CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params&
         return 90 * COIN;
 	} else if (nPrevHeight <= 145000) {
         return 100 * COIN;
+	} else if (nPrevHeight <= 150000) {
+		return 110 * COIN;
+	} else if (nPrevHeight <= 155000) {
+        return 120 * COIN;
+	} else if (nPrevHeight <= 160000) {
+        return 130 * COIN;
+	} else if (nPrevHeight <= 165000) {
+        return 140 * COIN;
+	} else if (nPrevHeight <= 170000) {
+        return 150 * COIN;
+	} else if (nPrevHeight <= 175000) {
+        return 160 * COIN;
 	}
 
-    CAmount nSubsidy = 110 * COIN;
+    CAmount nSubsidy = 1 * COIN;
 
     // yearly decline of production by ~50% per year until reached max coin ~32M.
     for (int i = consensusParams.nSubsidyHalvingInterval; i <= nPrevHeight; i += consensusParams.nSubsidyHalvingInterval) {
@@ -1787,9 +1799,13 @@ CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params&
 
 CAmount GetMasternodePayment(int nHeight, CAmount blockValue)
 {
-    
+    if (nHeight <= 140000) {
 	return blockValue/10*9; // 90%
-    
+    } else if (nHeight <= 175000) {
+	return blockValue/20*19; // 95%
+	} else {
+	return blockValue/20; // 5%
+    };
 }
 
 bool IsInitialBlockDownload()
